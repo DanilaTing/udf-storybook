@@ -8,49 +8,83 @@ export default {
   component: O_Menubar
 };
 
-const leftSideItems = [
-  {
-    type: "logo",
-    logoUrl:
-      "https://cdn-images-1.medium.com/fit/c/64/64/1*m2kgpFWBwJZ9vRxXkZTHxA.png",
-    url: "/home"
-  }
-];
-
-const rightSideItems = [
-  {
-    type: "button",
-    text: "About",
-    url: "/about"
-  },
-  {
-    type: "button",
-    text: "New",
-    action: "openDropdown",
-    dropdownItems: [
-      {
-        text: "Item 1",
-        url: "/item1"
-      },
-      {
-        text: "Item 2",
-        url: "/item1"
-      },
-      {
-        text: "Item 3",
-        url: "/item1"
+const props = {
+  leftSideItems: [
+    {
+      component: "A_Logo",
+      props: {
+        logoUrl:
+          "https://cdn-images-1.medium.com/fit/c/64/64/1*m2kgpFWBwJZ9vRxXkZTHxA.png",
+        url: "/home"
       }
-    ]
-  },
-  {
-    type: "avatar",
-    userName: "Danila Timofeev",
-    avatarUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/200px-Cat03.jpg",
-    url: ""
-  }
-];
+    },
+    {
+      component: "M_SearchField",
+      props: {
+        placeholder: "Search",
+        options: [
+          {
+            name: "Option one",
+            value: 1,
+            callback: ""
+          },
+          {
+            name: "Option two",
+            value: 2,
+            callback: ""
+          },
+          {
+            name: "Option three",
+            value: 3,
+            callback: ""
+          }
+        ],
+        text: "Button Text",
+        buttonType: "text"
+      }
+    }
+  ],
+  rightSideItems: [
+    {
+      component: "A_TextButton",
+      props: {
+        text: "About",
+        url: "/about"
+      }
+    },
+    {
+      component: "M_DropdownButton",
+      props: {
+        text: "Button Text",
+        buttonType: "text",
+        options: [
+          {
+            name: "Option one",
+            value: 1,
+            callback: ""
+          },
+          {
+            name: "Option two",
+            value: 2,
+            callback: ""
+          },
+          {
+            name: "Option three",
+            value: 3,
+            callback: ""
+          }
+        ]
+      }
+    },
+    {
+      component: "A_Avatar",
+      props: {
+        userName: "Danila Timofeev",
+        url: "",
+        small: true
+      }
+    }
+  ]
+};
 
-export const Generic = () => (
-  <O_Menubar leftSideItems={leftSideItems} rightSideItems={rightSideItems} />
-);
+export const Generic = () => <O_Menubar {...props} />;
